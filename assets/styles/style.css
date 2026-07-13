@@ -1,0 +1,23 @@
+/*Reset Básico*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*Variáveis*/
+:root{
+    --cor-primaria: #6d4c41;
+    --cor-fundo: #fdfaf6;
+    --cor-texto: #333;
+    --fonte-padrao: 'Segoe UI', Tahoma, sans-serif;
+}
+
+body{
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: var(--fonte-padrao);
+    padding: 20px;
+}
+
+
