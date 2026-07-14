@@ -19,7 +19,7 @@ body{
     background-color: var(--cor-fundo);
     color: var(--cor-texto);
     font-family: var(--fonte-padrao);
-    padding: 20px;
+    padding: 20px;  
 }
 
 /*Button*/
@@ -55,3 +55,40 @@ header h1{
     color: var(--cor-primaria);
     font-size: 1.9rem;
 }
+
+/* Layout do Container Principal */
+main{
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilização de Labels e Inputs */
+.form-group{
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--cor-primaria);
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+input:focus{
+    outline: none;
+    border-color: var(--cor-secundaria);
+    box-shadow: 0 0 5px rgba(0, 119, 182, 0.3);
+}
+
