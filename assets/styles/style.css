@@ -7,9 +7,11 @@
 
 /*Variáveis*/
 :root{
-    --cor-primaria: #6d4c41;
-    --cor-fundo: #fdfaf6;
-    --cor-texto: #333;
+    --cor-primaria: #003366;
+    --cor-secundaria: #0077b6;
+    --cor-fundo: #f0f4f8;
+    --cor-texto: #1a1a1a;
+
     --fonte-padrao: 'Segoe UI', Tahoma, sans-serif;
 }
 
