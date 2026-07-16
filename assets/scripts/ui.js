@@ -19,11 +19,14 @@ export function obterDadosFormulario() {
         .querySelector("#habilidades")
         .value
         .split(",")
-        .map(habilidade => habilidade.trim());
+        .map(habilidade => habilidade.trim())
+        .filter(habilidade => habilidade !== "");
 
-    const experienciaMeses = Number(
-        document.querySelector("#experiencia").value
-    );
+    const experiencia = document.querySelector("#experiencia").value;
+
+    const experienciaMeses = experiencia === ""
+        ? null
+        : Number(experiencia);
 
     const candidato = {
         nome,
@@ -33,4 +36,27 @@ export function obterDadosFormulario() {
     };
 
     return candidato;
+}
+
+export function validarFormulario(candidato) {
+
+    console.log("Entrou na validação.")
+
+    if (!candidato.nome) {
+        return "Informe seu nome.";
+    }
+
+    if (!candidato.area) {
+        return "Selecione uma área.";
+    }
+
+    if (candidato.habilidades.length === 0) {
+        return "Informe pelo menos uma habilidade.";
+    }
+
+    if (!candidato.experienciaMeses && candidato.experienciaMeses !== 0) {
+        return "Informe sua experiência.";
+    }
+
+    return null;
 }

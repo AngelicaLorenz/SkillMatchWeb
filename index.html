@@ -18,7 +18,7 @@
         <!-- Seção 1: Formulário -->
         <section>
             <h2>Preencha seu perfil</h2>
-            <form id="candidate-form">
+            <form id="candidate-form" novalidate>
                 <!--Campo Nome-->
                 <div class="form-group">
                     <label for="nome">Nome completo</label>
@@ -28,7 +28,7 @@
                 <!-- Campo Área de Atuação -->
                  <div class="form-group">
                     <label for="area">Área de atuação</label>
-                    <select id="area" name="area" required>
+                    <select id="area" name="area">
                         <option value="">Selecione uma área</option>
                         <option value="front-end">Front-End</option>
                         <option value="back-end">Back-End</option>
@@ -39,14 +39,14 @@
                  <!-- Campo Habilidades -->
                   <div class="form-group">
                     <label for="habilidades">Habilidades</label>
-                    <input type="text" name="habilidades" id="habilidades" placeholder="Ex: HTML, CSS, JavaScript..." required>
+                    <input type="text" name="habilidades" id="habilidades" placeholder="Ex: HTML, CSS, JavaScript...">
                     <small>Separe as habilidades por vírgula.</small>
                   </div>
 
                   <!-- Campo Experiência -->
                    <div class="form-group">
                     <label for="experiencia">Experiência em meses</label>
-                    <input type="number" name="experiencia" id="experiencia" placeholder="Ex: 8" required>
+                    <input type="number" name="experiencia" id="experiencia" placeholder="Ex: 8">
                    </div>
 
                    <!-- Botão de busca -->
