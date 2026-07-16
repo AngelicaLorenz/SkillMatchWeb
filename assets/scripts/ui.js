@@ -60,3 +60,18 @@ export function validarFormulario(candidato) {
 
     return null;
 }
+
+export function processarFormulario() {
+
+    const candidato = obterDadosFormulario();
+
+    const erro = validarFormulario(candidato);
+
+    if (erro) {
+        alert(erro);
+        return null;
+    }
+
+    return candidato;
+
+}
