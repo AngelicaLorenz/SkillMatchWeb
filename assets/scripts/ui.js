@@ -12,8 +12,12 @@ export function capturarFormulario() {
 export function obterDadosFormulario() {
 
     const nome = document.querySelector("#nome").value;
+
     const area = document.querySelector("#area").value;
-    const habilidades = document.querySelector("#habilidades").value
+
+    const habilidades = document
+        .querySelector("#habilidades")
+        .value
         .split(",")
         .map(habilidade => habilidade.trim());
 
