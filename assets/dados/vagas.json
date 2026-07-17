@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "empresa": "Tech Systems",
+        "cargo": "Desenvolvedor Front-End Júnior",
+        "requisitos": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "GitHub"
+        ],
+        "salario": 2900,
+        "modalidade": "Remoto",
+        "nivel": "Júnior"
+    },
+    {
+        "id": 2,
+        "empresa": "123 Code",
+        "cargo": "Estágio Front-End",
+        "requisitos": [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+        "salario": 1700,
+        "modalidade": "Híbrido",
+        "nivel": "Estágio"
+    },
+    {
+        "id": 3,
+        "empresa": "Web Tech",
+        "cargo": "Programador JavaScript Pleno",
+        "requisitos": [
+            "JavaScript",
+            "NodeJS",
+            "GitHub",
+            "Kanban",
+            "Lógica de Programação"
+        ],
+        "salario": 3500,
+        "modalidade": "Presencial",
+        "nivel": "Pleno"
+    }
+]

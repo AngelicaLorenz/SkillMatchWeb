@@ -1,14 +1,10 @@
-// Arquivo principal da aplicação
-// Responsável por iniciar o sistema
-
-import {
-    capturarFormulario,
-    processarFormulario    
-} from "./ui.js";
+import { capturarFormulario, processarFormulario } from "./ui.js";
+import { buscarVagas } from "./dados.js";
+import { analisarVagas } from "./motor.js";
 
 const formulario = capturarFormulario();
 
-formulario.addEventListener("submit", (event) => {
+formulario.addEventListener("submit", async (event) => {
 
     event.preventDefault();
 
@@ -18,6 +14,17 @@ formulario.addEventListener("submit", (event) => {
         return;
     }
 
+    console.log("Candidato:");
     console.log(candidato);
+
+    const vagas = await buscarVagas();
+
+    console.log("Vagas:");
+    console.log(vagas);
+
+    const relatorios = analisarVagas(candidato, vagas);
+
+    console.log("Relatórios:");
+    console.log(relatorios);
 
 });
