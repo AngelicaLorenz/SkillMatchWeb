@@ -57,3 +57,21 @@ export function analisarVagas(candidato, listaVagas) {
     return relatorios;
 
 }
+
+export function encontrarMelhorVaga(relatorios) {
+
+    if (relatorios.length === 0) {
+        return null;
+    }
+
+    const melhorVaga = relatorios.reduce((melhor, atual) => {
+
+        return atual.porcentagem > melhor.porcentagem
+            ? atual
+            : melhor;
+
+    });
+
+    return melhorVaga;
+
+}

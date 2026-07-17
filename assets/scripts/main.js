@@ -1,6 +1,6 @@
 import { capturarFormulario, processarFormulario } from "./ui.js";
 import { buscarVagas } from "./dados.js";
-import { analisarVagas } from "./motor.js";
+import { analisarVagas, encontrarMelhorVaga } from "./motor.js";
 
 const formulario = capturarFormulario();
 
@@ -24,7 +24,14 @@ formulario.addEventListener("submit", async (event) => {
 
     const relatorios = analisarVagas(candidato, vagas);
 
+    const melhorVaga = encontrarMelhorVaga(relatorios);
+
     console.log("Relatórios:");
     console.log(relatorios);
+    
+    console.log("Melhor vaga:");
+    console.log(melhorVaga);
+
+    
 
 });
