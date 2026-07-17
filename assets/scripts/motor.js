@@ -75,3 +75,25 @@ export function encontrarMelhorVaga(relatorios) {
     return melhorVaga;
 
 }
+
+export function gerarRecomendacaoEstudos(relatorios) {
+
+    let habilidadesFaltantes = [];
+
+    for (const relatorio of relatorios) {
+
+        habilidadesFaltantes = habilidadesFaltantes.concat(relatorio.faltantes);
+
+    }
+
+    const habilidadesUnicas = [...new Set(habilidadesFaltantes)];
+
+    if (habilidadesUnicas.length === 0) {
+
+        return "Parabéns! Você atende a todos os requisitos das vagas analisadas.";
+
+    }
+
+    return `Recomendamos estudar: ${habilidadesUnicas.join(", ")}.`;
+
+}
