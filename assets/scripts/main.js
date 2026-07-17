@@ -1,15 +1,23 @@
-import 
-    { capturarFormulario, 
-    processarFormulario 
-    } from "./ui.js";
+// Arquivo principal da aplicação
+// Responsável por iniciar o sistema
+
+import {
+    capturarFormulario,
+    obterDadosFormulario,
+    validarFormulario,
+    limparResultados,
+    mostrarMelhorVaga,
+    mostrarListaVagas,
+    mostrarRecomendacao
+} from "./ui.js";
 
 import { buscarVagas } from "./dados.js";
 
-import 
-    { analisarVagas, 
-    encontrarMelhorVaga, 
-    gerarRecomendacaoEstudos 
-    } from "./motor.js";
+import {
+    analisarVagas,
+    encontrarMelhorVaga,
+    gerarRecomendacaoEstudos
+} from "./motor.js";
 
 const formulario = capturarFormulario();
 
@@ -17,33 +25,37 @@ formulario.addEventListener("submit", async (event) => {
 
     event.preventDefault();
 
-    const candidato = processarFormulario();
+    limparResultados();
 
-    if (!candidato) {
+    const candidato = obterDadosFormulario();
+
+    const erro = validarFormulario(candidato);
+
+    if (erro) {
+        alert(erro);
         return;
     }
 
-    console.log("Candidato:");
-    console.log(candidato);
+    try {
 
-    const vagas = await buscarVagas();
+        const vagas = await buscarVagas();
 
-    console.log("Vagas:");
-    console.log(vagas);
+        const relatorios = analisarVagas(candidato, vagas);
 
-    const relatorios = analisarVagas(candidato, vagas);
+        const melhorVaga = encontrarMelhorVaga(relatorios);
 
-    const melhorVaga = encontrarMelhorVaga(relatorios);
+        const recomendacao = gerarRecomendacaoEstudos(relatorios);
 
-    console.log("Relatórios:");
-    console.log(relatorios);
-    
-    console.log("Melhor vaga:");
-    console.log(melhorVaga);
+        mostrarMelhorVaga(melhorVaga);
 
-    const recomendacao = gerarRecomendacaoEstudos(relatorios);
+        mostrarListaVagas(relatorios);
 
-    console.log("Recomendação:");
-    console.log(recomendacao);
-    
+        mostrarRecomendacao(recomendacao);
+
+    } catch (erro) {
+
+        console.error(erro);
+
+    }
+
 });

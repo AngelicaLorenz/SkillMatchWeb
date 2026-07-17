@@ -4,10 +4,14 @@
 
 export function analisarVagas(candidato, listaVagas) {
 
+    const habilidadesCandidato = candidato.habilidades.map(habilidade =>
+    habilidade.toLowerCase()
+);
+
     const relatorios = listaVagas.map(vaga => {
 
         const habilidadesCorrespondentes = vaga.requisitos.filter(requisito =>
-            candidato.habilidades.includes(requisito)
+            habilidadesCandidato.includes(requisito.toLowerCase())
         );
 
         const habilidadesFaltantes = vaga.requisitos.filter(requisito =>
