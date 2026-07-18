@@ -1,7 +1,10 @@
+// ==========================================
+// UI
 // Responsável por:
 // - Ler os campos do formulário;
 // - Validar os dados;
 // - Exibir os resultados na tela.
+// ==========================================
 
 export function capturarFormulario() {
     return document.querySelector("#candidate-form");
@@ -17,7 +20,7 @@ export function obterDadosFormulario() {
         .querySelector("#habilidades")
         .value
         .split(",")
-        .map(habilidade => habilidade.trim())
+        .map(habilidade => habilidade.trim() .toUpperCase())
         .filter(habilidade => habilidade !== "");
 
     const experienciaMeses = Number(
@@ -67,23 +70,130 @@ export function mostrarMelhorVaga(melhorVaga) {
 
     destaque.innerHTML = "";
 
-    const titulo = document.createElement("h3");
-    titulo.textContent = "⭐ Melhor Vaga";
+    const cor =
+        melhorVaga.compatibilidade === "Alta"
+            ? "#22c55e"
+            : melhorVaga.compatibilidade === "Média"
+            ? "#facc15"
+            : "#ef4444";
 
-    const empresa = document.createElement("p");
-    empresa.textContent = `Empresa: ${melhorVaga.empresa}`;
+    destaque.innerHTML = `
 
-    const cargo = document.createElement("p");
-    cargo.textContent = `Cargo: ${melhorVaga.cargo}`;
+        <div class="card-vaga melhor-vaga">
 
-    const compatibilidade = document.createElement("p");
-    compatibilidade.textContent =
-        `Compatibilidade: ${melhorVaga.porcentagem}%`;
+            <div class="selo">
 
-    destaque.appendChild(titulo);
-    destaque.appendChild(empresa);
-    destaque.appendChild(cargo);
-    destaque.appendChild(compatibilidade);
+                ⭐ Melhor Vaga
+
+            </div>
+
+            <div class="card-topo">
+
+                <div class="card-info">
+
+                    <h3>${melhorVaga.cargo}</h3>
+
+                    <p class="empresa">
+
+                        🏢 ${melhorVaga.empresa}
+
+                    </p>
+
+                </div>
+
+                <div class="card-compatibilidade">
+
+                    <div
+                        class="progress-ring"
+                        style="
+                            --progress:${melhorVaga.porcentagem};
+                            --cor:${cor};
+                        "
+                    >
+
+                        <span>${melhorVaga.porcentagem}%</span>
+
+                    </div>
+
+                    <span class="badge ${melhorVaga.compatibilidade.toLowerCase()}">
+
+                        ${melhorVaga.compatibilidade}
+
+                    </span>
+
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="card-detalhes">
+
+                <div>
+
+                    <span>📍</span>
+
+                    <p>Modalidade</p>
+
+                    <strong>${melhorVaga.modalidade}</strong>
+
+                </div>
+
+                <div>
+
+                    <span>💰</span>
+
+                    <p>Salário</p>
+
+                    <strong>R$ ${melhorVaga.salario}</strong>
+
+                </div>
+
+                <div>
+
+                    <span>🎓</span>
+
+                    <p>Nível</p>
+
+                    <strong>${melhorVaga.nivel}</strong>
+
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="card-habilidades">
+
+                <h4>
+
+                    🚀 Para aumentar sua compatibilidade estude:
+
+                </h4>
+
+                <div class="chips">
+
+                    ${
+                        melhorVaga.faltantes.length
+
+                            ? melhorVaga.faltantes
+                                  .map(habilidade =>
+                                      `<span class="chip">${habilidade}</span>`
+                                  )
+                                  .join("")
+
+                            : `<span class="chip completo">
+                                    Nenhuma 🎉
+                               </span>`
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+
+    `;
 
 }
 
@@ -93,22 +203,122 @@ export function mostrarListaVagas(relatorios) {
 
     lista.innerHTML = "";
 
-    const titulo = document.createElement("h3");
-    titulo.textContent = "📋 Vagas Encontradas";
-
-    lista.appendChild(titulo);
-
     relatorios.forEach(relatorio => {
 
-        const card = document.createElement("div");
-
+        const card = document.createElement("article");
         card.classList.add("card-vaga");
 
+        const cor =
+            relatorio.compatibilidade === "Alta"
+                ? "#22c55e"
+                : relatorio.compatibilidade === "Média"
+                ? "#facc15"
+                : "#ef4444";
+
         card.innerHTML = `
-            <h4>${relatorio.cargo}</h4>
-            <p><strong>Empresa:</strong> ${relatorio.empresa}</p>
-            <p><strong>Compatibilidade:</strong> ${relatorio.porcentagem}%</p>
-            <p><strong>Classificação:</strong> ${relatorio.compatibilidade}</p>
+
+            <div class="card-topo">
+
+                <div class="card-info">
+
+                    <h3>${relatorio.cargo}</h3>
+
+                    <p class="empresa">
+                        🏢 ${relatorio.empresa}
+                    </p>
+
+                </div>
+
+                <div class="card-compatibilidade">
+
+                    <div
+                        class="progress-ring"
+                        style="
+                            --progress:${relatorio.porcentagem};
+                            --cor:${cor};
+                        "
+                    >
+
+                        <span>${relatorio.porcentagem}%</span>
+
+                    </div>
+
+                    <span class="badge ${relatorio.compatibilidade.toLowerCase()}">
+
+                        ${relatorio.compatibilidade}
+
+                    </span>
+
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="card-detalhes">
+
+                <div>
+
+                    <span>📍</span>
+
+                    <p>Modalidade</p>
+
+                    <strong>${relatorio.modalidade}</strong>
+
+                </div>
+
+                <div>
+
+                    <span>💰</span>
+
+                    <p>Salário</p>
+
+                    <strong>R$ ${relatorio.salario}</strong>
+
+                </div>
+
+                <div>
+
+                    <span>🎓</span>
+
+                    <p>Nível</p>
+
+                    <strong>${relatorio.nivel}</strong>
+
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="card-habilidades">
+
+                <h4>
+
+                    📚 Habilidades para alcançar 100%
+
+                </h4>
+
+                <div class="chips">
+
+                    ${
+                        relatorio.faltantes.length
+
+                            ? relatorio.faltantes
+                                  .map(habilidade =>
+                                      `<span class="chip">${habilidade}</span>`
+                                  )
+                                  .join("")
+
+                            : `<span class="chip completo">
+                                    Nenhuma 🎉
+                               </span>`
+                    }
+
+                </div>
+
+            </div>
+
         `;
 
         lista.appendChild(card);
@@ -124,12 +334,36 @@ export function mostrarRecomendacao(recomendacao) {
     area.innerHTML = "";
 
     const titulo = document.createElement("h3");
-    titulo.textContent = "📚 Recomendação de Estudos";
 
-    const texto = document.createElement("p");
-    texto.textContent = recomendacao;
+    titulo.textContent = "📚 Plano de Estudos";
 
     area.appendChild(titulo);
-    area.appendChild(texto);
+
+    const texto = recomendacao
+        .replace("Recomendamos estudar: ", "")
+        .replace(".", "");
+
+    const habilidades = texto
+        .split(",")
+        .map(item => item.trim())
+        .filter(item => item !== "");
+
+    const chips = document.createElement("div");
+
+    chips.classList.add("chips");
+
+    habilidades.forEach(habilidade => {
+
+        const chip = document.createElement("span");
+
+        chip.classList.add("chip");
+
+        chip.textContent = habilidade;
+
+        chips.appendChild(chip);
+
+    });
+
+    area.appendChild(chips);
 
 }

@@ -11,11 +11,11 @@ export function analisarVagas(candidato, listaVagas) {
     const relatorios = listaVagas.map(vaga => {
 
         const habilidadesCorrespondentes = vaga.requisitos.filter(requisito =>
-            habilidadesCandidato.includes(requisito.toLowerCase())
+            candidato.habilidades.includes(requisito.toUpperCase())
         );
 
         const habilidadesFaltantes = vaga.requisitos.filter(requisito =>
-            !candidato.habilidades.includes(requisito)
+            !candidato.habilidades.includes(requisito.toUpperCase())
         );
 
         const totalRequisitos = vaga.requisitos.length;
@@ -44,17 +44,23 @@ export function analisarVagas(candidato, listaVagas) {
 
         return {
 
-            empresa: vaga.empresa,
+        empresa: vaga.empresa,
 
-            cargo: vaga.cargo,
+        cargo: vaga.cargo,
 
-            porcentagem,
+        nivel: vaga.nivel,
 
-            compatibilidade,
+        modalidade: vaga.modalidade,
 
-            faltantes: habilidadesFaltantes
+        salario: vaga.salario,
 
-        };
+        porcentagem,
+
+        compatibilidade,
+
+        faltantes: habilidadesFaltantes
+
+    };
 
     });
 
@@ -90,7 +96,11 @@ export function gerarRecomendacaoEstudos(relatorios) {
 
     }
 
-    const habilidadesUnicas = [...new Set(habilidadesFaltantes)];
+    const habilidadesUnicas = [
+        ...new Set(
+            habilidadesFaltantes.map(h => h.toUpperCase())
+        )
+    ];
 
     if (habilidadesUnicas.length === 0) {
 
