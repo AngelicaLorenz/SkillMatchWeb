@@ -335,7 +335,7 @@ export function mostrarRecomendacao(recomendacao) {
 
     const titulo = document.createElement("h3");
 
-    titulo.textContent = "📚 Plano de Estudos";
+    titulo.textContent = "Recomendação de Estudos";
 
     area.appendChild(titulo);
 
