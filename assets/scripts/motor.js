@@ -4,14 +4,18 @@
 
 export function analisarVagas(candidato, listaVagas) {
 
+    const habilidadesCandidato = candidato.habilidades.map(habilidade =>
+    habilidade.toLowerCase()
+);
+
     const relatorios = listaVagas.map(vaga => {
 
         const habilidadesCorrespondentes = vaga.requisitos.filter(requisito =>
-            candidato.habilidades.includes(requisito)
+            candidato.habilidades.includes(requisito.toUpperCase())
         );
 
         const habilidadesFaltantes = vaga.requisitos.filter(requisito =>
-            !candidato.habilidades.includes(requisito)
+            !candidato.habilidades.includes(requisito.toUpperCase())
         );
 
         const totalRequisitos = vaga.requisitos.length;
@@ -40,20 +44,70 @@ export function analisarVagas(candidato, listaVagas) {
 
         return {
 
-            empresa: vaga.empresa,
+        empresa: vaga.empresa,
 
-            cargo: vaga.cargo,
+        cargo: vaga.cargo,
 
-            porcentagem,
+        nivel: vaga.nivel,
 
-            compatibilidade,
+        modalidade: vaga.modalidade,
 
-            faltantes: habilidadesFaltantes
+        salario: vaga.salario,
 
-        };
+        porcentagem,
+
+        compatibilidade,
+
+        faltantes: habilidadesFaltantes
+
+    };
 
     });
 
     return relatorios;
+
+}
+
+export function encontrarMelhorVaga(relatorios) {
+
+    if (relatorios.length === 0) {
+        return null;
+    }
+
+    const melhorVaga = relatorios.reduce((melhor, atual) => {
+
+        return atual.porcentagem > melhor.porcentagem
+            ? atual
+            : melhor;
+
+    });
+
+    return melhorVaga;
+
+}
+
+export function gerarRecomendacaoEstudos(relatorios) {
+
+    let habilidadesFaltantes = [];
+
+    for (const relatorio of relatorios) {
+
+        habilidadesFaltantes = habilidadesFaltantes.concat(relatorio.faltantes);
+
+    }
+
+    const habilidadesUnicas = [
+        ...new Set(
+            habilidadesFaltantes.map(h => h.toUpperCase())
+        )
+    ];
+
+    if (habilidadesUnicas.length === 0) {
+
+        return "Parabéns! Você atende a todos os requisitos das vagas analisadas.";
+
+    }
+
+    return `Recomendamos estudar: ${habilidadesUnicas.join(", ")}.`;
 
 }
