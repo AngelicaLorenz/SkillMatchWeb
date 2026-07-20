@@ -6,7 +6,7 @@ Encontre a vaga ideal para o seu perfil e descubra quais habilidades desenvolver
 
 ## 📖 Sobre o projeto
 
-O **SkillMatch** é uma aplicação web desenvolvida como projeto do desafio do módulo de Engenharia de Software.
+O **SkillMatch** é uma aplicação web desenvolvida como projeto do desafio do módulo 1 do curso de desenvolvimento Front-End.
 
 O sistema permite que o usuário informe seu perfil profissional e compare suas habilidades com um conjunto de vagas carregadas através de um arquivo JSON.
 
@@ -244,11 +244,14 @@ GitHub:
 
 https://github.com/AngelicaLorenz
 
-LinkedIn:
+LinkedIn: 
 
 https://www.linkedin.com/in/ang%C3%A9lica-lorenz-7ba38328b/
 
 ---
+Trello:
+
+https://trello.com/invite/b/6a4c524448b312ce3639f387/ATTI4a664056020ce245f771c5677d43188a0E9254A4/desafio-modulo-1-sctec
 
 # 📄 Licença
 
