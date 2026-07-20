@@ -397,6 +397,26 @@ export function carregarFormulario() {
 
 }
 
+export function mostrarMensagemVazia(){
+
+    document.querySelector("#lista-vagas").innerHTML = `
+
+        <div class="card-vazio">
+
+            <h3>Nenhuma vaga encontrada.</h3>
+
+            <p>
+
+                Ainda não existem vagas cadastradas para esta área.
+
+            </p>
+
+        </div>
+
+    `;
+
+}
+
 export function limparFormulario() {
 
     document.querySelector("#candidate-form").reset();
