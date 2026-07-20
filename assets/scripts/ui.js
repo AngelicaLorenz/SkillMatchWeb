@@ -396,3 +396,21 @@ export function carregarFormulario() {
         candidato.experienciaMeses;
 
 }
+
+export function limparFormulario() {
+
+    document.querySelector("#candidate-form").reset();
+
+    document.querySelector("#destaque-vaga").innerHTML = "";
+
+    document.querySelector("#lista-vagas").innerHTML = "";
+
+    document.querySelector("#recomendacao-estudos").innerHTML = "";
+
+}
+
+export function limparLocalStorage() {
+
+    localStorage.removeItem("candidato");
+
+}
