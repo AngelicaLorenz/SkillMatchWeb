@@ -8,7 +8,9 @@ import {
     limparResultados,
     mostrarMelhorVaga,
     mostrarListaVagas,
-    mostrarRecomendacao
+    mostrarRecomendacao,
+    salvarFormulario,
+    carregarFormulario
 } from "./ui.js";
 
 import { buscarVagas } from "./dados.js";
@@ -20,6 +22,7 @@ import {
 } from "./motor.js";
 
 const formulario = capturarFormulario();
+carregarFormulario();
 
 formulario.addEventListener("submit", async (event) => {
 
@@ -35,6 +38,8 @@ formulario.addEventListener("submit", async (event) => {
         alert(erro);
         return;
     }
+
+    salvarFormulario(candidato);
 
     try {
 

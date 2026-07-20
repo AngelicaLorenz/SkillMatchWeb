@@ -367,3 +367,32 @@ export function mostrarRecomendacao(recomendacao) {
     area.appendChild(chips);
 
 }
+
+export function salvarFormulario(candidato) {
+
+    localStorage.setItem(
+        "candidato",
+        JSON.stringify(candidato)
+    );
+
+}
+
+export function carregarFormulario() {
+
+    const candidato = JSON.parse(
+        localStorage.getItem("candidato")
+    );
+
+    if (!candidato) return;
+
+    document.querySelector("#nome").value = candidato.nome;
+
+    document.querySelector("#area").value = candidato.area;
+
+    document.querySelector("#habilidades").value =
+        candidato.habilidades.join(", ");
+
+    document.querySelector("#experiencia").value =
+        candidato.experienciaMeses;
+
+}
