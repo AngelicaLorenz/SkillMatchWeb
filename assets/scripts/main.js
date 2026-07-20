@@ -10,7 +10,8 @@ import {
     mostrarListaVagas,
     mostrarRecomendacao,
     salvarFormulario,
-    carregarFormulario
+    carregarFormulario,
+    mostrarMensagemVazia
 } from "./ui.js";
 
 import { buscarVagas } from "./dados.js";
@@ -46,6 +47,13 @@ formulario.addEventListener("submit", async (event) => {
         const vagas = await buscarVagas();
 
         const relatorios = analisarVagas(candidato, vagas);
+            if (relatorios.length === 0) {
+
+            alert("Nenhuma vaga encontrada para esta área.");
+
+            return;
+
+}
 
         const melhorVaga = encontrarMelhorVaga(relatorios);
 
@@ -64,3 +72,11 @@ formulario.addEventListener("submit", async (event) => {
     }
 
 });
+
+if(relatorios.length===0){
+
+    mostrarMensagemVazia();
+
+    return;
+
+}

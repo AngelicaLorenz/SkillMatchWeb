@@ -617,3 +617,31 @@ footer{
     background:#ef4444;
 
 }
+
+.card-vazio{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:2rem;
+
+    text-align:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.card-vazio h3{
+
+    color:#2563eb;
+
+    margin-bottom:.8rem;
+
+}
+
+.card-vazio p{
+
+    color:#666;
+
+}

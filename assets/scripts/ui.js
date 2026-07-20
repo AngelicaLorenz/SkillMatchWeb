@@ -396,3 +396,24 @@ export function carregarFormulario() {
         candidato.experienciaMeses;
 
 }
+
+export function mostrarMensagemVazia(){
+
+    document.querySelector("#lista-vagas").innerHTML = `
+
+        <div class="card-vazio">
+
+            <h3>Nenhuma vaga encontrada.</h3>
+
+            <p>
+
+                Ainda não existem vagas cadastradas para esta área.
+
+            </p>
+
+        </div>
+
+    `;
+
+}
+
