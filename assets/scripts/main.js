@@ -1,30 +1,89 @@
-import { capturarFormulario, processarFormulario } from "./ui.js";
+// ==========================================
+// ARQUIVO PRINCIPAL
+// ==========================================
+
+import {
+    capturarFormulario,
+    obterDadosFormulario,
+    validarFormulario,
+    limparResultados,
+    mostrarMelhorVaga,
+    mostrarListaVagas,
+    mostrarRecomendacao,
+    salvarFormulario,
+    carregarFormulario,
+    limparFormulario,
+    limparLocalStorage,
+    mostrarMensagemVazia
+} from "./ui.js";
+
 import { buscarVagas } from "./dados.js";
-import { analisarVagas } from "./motor.js";
+
+import {
+    analisarVagas,
+    encontrarMelhorVaga,
+    gerarRecomendacaoEstudos
+} from "./motor.js";
 
 const formulario = capturarFormulario();
+
+carregarFormulario();
+
+const botaoLimpar = document.querySelector("#btn-limpar");
 
 formulario.addEventListener("submit", async (event) => {
 
     event.preventDefault();
 
-    const candidato = processarFormulario();
+    limparResultados();
 
-    if (!candidato) {
+    const candidato = obterDadosFormulario();
+
+    const erro = validarFormulario(candidato);
+
+    if (erro) {
+        alert(erro);
         return;
     }
 
-    console.log("Candidato:");
-    console.log(candidato);
+    salvarFormulario(candidato);
 
-    const vagas = await buscarVagas();
+    try {
 
-    console.log("Vagas:");
-    console.log(vagas);
+        const vagas = await buscarVagas();
 
-    const relatorios = analisarVagas(candidato, vagas);
+        const relatorios = analisarVagas(candidato, vagas);
 
-    console.log("Relatórios:");
-    console.log(relatorios);
+        if (relatorios.length === 0) {
+
+            mostrarMensagemVazia();
+
+            return;
+
+        }
+
+        const melhorVaga = encontrarMelhorVaga(relatorios);
+
+        const recomendacao = gerarRecomendacaoEstudos(relatorios);
+
+        mostrarMelhorVaga(melhorVaga);
+
+        mostrarListaVagas(relatorios);
+
+        mostrarRecomendacao(recomendacao);
+
+    } catch (erro) {
+
+        console.error(erro);
+
+    }
+
+});
+
+botaoLimpar.addEventListener("click", () => {
+
+    limparLocalStorage();
+
+    limparFormulario();
 
 });

@@ -4,17 +4,29 @@
 
 export function analisarVagas(candidato, listaVagas) {
 
-    const relatorios = listaVagas.map(vaga => {
+    // Filtra somente as vagas da área escolhida
+    const vagasFiltradas = listaVagas.filter(vaga =>
+        vaga.area === candidato.area
+    );
 
-        const habilidadesCorrespondentes = vaga.requisitos.filter(requisito =>
-            candidato.habilidades.includes(requisito)
+    const relatorios = vagasFiltradas.map(vaga => {
+
+        // Padroniza para maiúsculas
+        const requisitos = vaga.requisitos.map(item => item.toUpperCase());
+
+        const habilidadesCandidato = candidato.habilidades.map(item =>
+            item.toUpperCase()
         );
 
-        const habilidadesFaltantes = vaga.requisitos.filter(requisito =>
-            !candidato.habilidades.includes(requisito)
+        const habilidadesCorrespondentes = requisitos.filter(requisito =>
+            habilidadesCandidato.includes(requisito)
         );
 
-        const totalRequisitos = vaga.requisitos.length;
+        const habilidadesFaltantes = requisitos.filter(requisito =>
+            !habilidadesCandidato.includes(requisito)
+        );
+
+        const totalRequisitos = requisitos.length;
 
         const totalAcertos = habilidadesCorrespondentes.length;
 
@@ -44,6 +56,12 @@ export function analisarVagas(candidato, listaVagas) {
 
             cargo: vaga.cargo,
 
+            nivel: vaga.nivel,
+
+            modalidade: vaga.modalidade,
+
+            salario: vaga.salario,
+
             porcentagem,
 
             compatibilidade,
@@ -55,5 +73,54 @@ export function analisarVagas(candidato, listaVagas) {
     });
 
     return relatorios;
+
+}
+
+// ==========================================
+// MELHOR VAGA
+// ==========================================
+
+export function encontrarMelhorVaga(relatorios) {
+
+    if (relatorios.length === 0) {
+
+        return null;
+
+    }
+
+    return relatorios.reduce((melhor, atual) =>
+
+        atual.porcentagem > melhor.porcentagem
+            ? atual
+            : melhor
+
+    );
+
+}
+
+// ==========================================
+// RECOMENDAÇÃO DE ESTUDOS
+// ==========================================
+
+export function gerarRecomendacaoEstudos(relatorios) {
+
+    let habilidades = [];
+
+    relatorios.forEach(relatorio => {
+
+        habilidades = habilidades.concat(relatorio.faltantes);
+
+    });
+
+    // Remove duplicados
+    habilidades = [...new Set(habilidades)];
+
+    if (habilidades.length === 0) {
+
+        return "Parabéns! Você atende todos os requisitos das vagas.";
+
+    }
+
+    return `Recomendamos estudar: ${habilidades.join(", ")}.`;
 
 }
