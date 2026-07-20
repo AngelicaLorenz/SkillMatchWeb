@@ -10,8 +10,7 @@ import {
     mostrarListaVagas,
     mostrarRecomendacao,
     salvarFormulario,
-    carregarFormulario,
-    mostrarMensagemVazia
+    carregarFormulario
 } from "./ui.js";
 
 import { buscarVagas } from "./dados.js";
@@ -23,6 +22,7 @@ import {
 } from "./motor.js";
 
 const formulario = capturarFormulario();
+const botaoLimpar = document.querySelector("#btn-limpar");
 carregarFormulario();
 
 formulario.addEventListener("submit", async (event) => {
@@ -70,6 +70,14 @@ formulario.addEventListener("submit", async (event) => {
         console.error(erro);
 
     }
+
+});
+
+botaoLimpar.addEventListener("click", () => {
+
+    limparLocalStorage();
+
+    limparFormulario();
 
 });
 
