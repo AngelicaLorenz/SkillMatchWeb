@@ -4,6 +4,7 @@
 
 export function analisarVagas(candidato, listaVagas) {
 
+<<<<<<< HEAD
     // Filtra somente as vagas da área escolhida
     const vagasFiltradas = listaVagas.filter(vaga =>
         vaga.area === candidato.area
@@ -20,6 +21,26 @@ export function analisarVagas(candidato, listaVagas) {
 
         const habilidadesCorrespondentes = requisitos.filter(requisito =>
             habilidadesCandidato.includes(requisito)
+=======
+    const habilidadesCandidato = candidato.habilidades.map(habilidade =>
+    habilidade.toLowerCase()
+);
+
+    const vagasFiltradas = listaVagas.filter(vaga =>
+
+        vaga.area === candidato.area
+
+    );
+
+    const relatorios = vagasFiltradas.map(vaga => {
+
+        const habilidadesCorrespondentes = vaga.requisitos.filter(requisito =>
+            candidato.habilidades.includes(requisito.toUpperCase())
+        );
+
+        const habilidadesFaltantes = vaga.requisitos.filter(requisito =>
+            !candidato.habilidades.includes(requisito.toUpperCase())
+>>>>>>> 66250cb597587306f1e05a876e06095d629abc1a
         );
 
         const habilidadesFaltantes = requisitos.filter(requisito =>
@@ -52,10 +73,11 @@ export function analisarVagas(candidato, listaVagas) {
 
         return {
 
-            empresa: vaga.empresa,
+        empresa: vaga.empresa,
 
-            cargo: vaga.cargo,
+        cargo: vaga.cargo,
 
+<<<<<<< HEAD
             nivel: vaga.nivel,
 
             modalidade: vaga.modalidade,
@@ -63,12 +85,21 @@ export function analisarVagas(candidato, listaVagas) {
             salario: vaga.salario,
 
             porcentagem,
+=======
+        nivel: vaga.nivel,
+>>>>>>> 66250cb597587306f1e05a876e06095d629abc1a
 
-            compatibilidade,
+        modalidade: vaga.modalidade,
 
-            faltantes: habilidadesFaltantes
+        salario: vaga.salario,
 
-        };
+        porcentagem,
+
+        compatibilidade,
+
+        faltantes: habilidadesFaltantes
+
+    };
 
     });
 
@@ -76,6 +107,7 @@ export function analisarVagas(candidato, listaVagas) {
 
 }
 
+<<<<<<< HEAD
 // ==========================================
 // MELHOR VAGA
 // ==========================================
@@ -122,5 +154,48 @@ export function gerarRecomendacaoEstudos(relatorios) {
     }
 
     return `Recomendamos estudar: ${habilidades.join(", ")}.`;
+=======
+export function encontrarMelhorVaga(relatorios) {
+
+    if (relatorios.length === 0) {
+        return null;
+    }
+
+    const melhorVaga = relatorios.reduce((melhor, atual) => {
+
+        return atual.porcentagem > melhor.porcentagem
+            ? atual
+            : melhor;
+
+    });
+
+    return melhorVaga;
+
+}
+
+export function gerarRecomendacaoEstudos(relatorios) {
+
+    let habilidadesFaltantes = [];
+
+    for (const relatorio of relatorios) {
+
+        habilidadesFaltantes = habilidadesFaltantes.concat(relatorio.faltantes);
+
+    }
+
+    const habilidadesUnicas = [
+        ...new Set(
+            habilidadesFaltantes.map(h => h.toUpperCase())
+        )
+    ];
+
+    if (habilidadesUnicas.length === 0) {
+
+        return "Parabéns! Você atende a todos os requisitos das vagas analisadas.";
+
+    }
+
+    return `Recomendamos estudar: ${habilidadesUnicas.join(", ")}.`;
+>>>>>>> 66250cb597587306f1e05a876e06095d629abc1a
 
 }
