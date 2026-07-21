@@ -1,0 +1,647 @@
+/*Reset Básico*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*Variáveis*/
+:root{
+    --cor-primaria: #003366;
+    --cor-secundaria: #0077b6;
+    --cor-fundo: #f0f4f8;
+    --cor-texto: #1a1a1a;
+
+    --fonte-padrao: 'Segoe UI', Tahoma, sans-serif;
+}
+
+body{
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: var(--fonte-padrao);
+    padding: 20px;  
+}
+
+/*Button*/
+button{
+    background-color: var(--cor-primaria);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: var(--cor-secundaria);
+}
+
+h2{
+    color: var(--cor-secundaria);
+    font-size: 1.4rem;
+}
+
+
+/*Header*/
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px; /*Espaço entre logo e título*/
+    padding: 10px 0;
+    border-bottom: 2px solid var(--cor-primaria);
+}
+
+header img{
+    width: 60px;
+    height: auto;    
+}
+
+header h1{
+    color: var(--cor-primaria);
+    font-size: 1.9rem;
+}
+
+/* Layout do Container Principal */
+main{
+    width: 90%;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+}
+
+/* Estilização de Labels e Inputs */
+form{
+    margin: 20px 10px;
+}
+.form-group{
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--cor-primaria);
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+input:focus{
+    outline: none;
+    border-color: var(--cor-secundaria);
+    box-shadow: 0 0 5px rgba(0, 119, 182, 0.3);
+}
+
+/*Footer*/
+footer{  
+    background-color: var(--cor-primaria);
+    color: var(--cor-fundo);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+/*----------------------------------------------------------------------------*/
+/* Quando a tela for maior que 768px (Desktop), ajustamos o que for preciso */
+
+@media (min-width: 768px) {
+    main {
+        width: 90%;
+        max-width: 900px;
+    }   
+    
+    header img{
+    width: 80px;
+    height: auto;    
+    }
+
+    header h1{
+        color: var(--cor-primaria);
+        font-size: 2.4rem;
+    }
+
+    footer{
+        font-size: 0.9rem;
+    }
+}
+
+
+/* ===================================================
+   RESULTADOS
+=================================================== */
+
+#resultados{
+    margin-top:3rem;
+}
+
+#lista-vagas{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
+    gap:1.5rem;
+    margin-top:2rem;
+}
+
+/* ===========================
+        CARD
+=========================== */
+
+.card-vaga{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:1.5rem;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.25s;
+
+    border:1px solid #e8e8e8;
+
+}
+
+.card-vaga:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 18px 35px rgba(0,0,0,.12);
+
+}
+
+
+.melhor-vaga{
+
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+    border:none;
+
+    box-shadow:0 15px 35px rgba(37,99,235,.35);
+   
+
+}
+
+
+
+.melhor-vaga .chip{
+
+    background:white;
+
+    color:#2563eb;
+
+    border:none;
+
+}
+
+.melhor-vaga .card-info h3,
+.melhor-vaga .empresa,
+.melhor-vaga .card-habilidades h4,
+.melhor-vaga strong{
+
+    color:white;
+
+}
+
+
+
+#destaque-vaga{
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    
+}
+
+
+
+/* ===========================
+        SELO
+=========================== */
+
+.selo{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:.5rem;
+
+    padding:.6rem 1.2rem;
+
+    background:linear-gradient(90deg,#FFD54A,#FFC107);
+
+    border-radius:999px;
+
+    font-weight:700;
+
+    margin-bottom:1.5rem;
+
+    box-shadow:0 4px 12px rgba(66, 66, 65, 0.4);
+    
+    color: var(--cor-primaria);
+
+}
+
+/* ===========================
+        TOPO
+=========================== */
+
+.card-topo{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:2rem;
+
+}
+
+.card-info{
+
+    flex:1;
+
+}
+
+.card-info h3{
+
+    color:#23395B;
+
+    margin-bottom:.5rem;
+
+    font-size:1.35rem;
+
+}
+
+.empresa{
+
+    color:#666;
+
+    font-size:1rem;
+
+}
+
+/* ===========================
+        PROGRESS RING
+=========================== */
+
+.card-compatibilidade{
+
+    text-align:center;
+
+}
+
+.progress-ring{
+
+    --progress:0;
+
+    --cor:#22c55e;
+
+    width:95px;
+
+    height:95px;
+
+    border-radius:50%;
+
+    background:
+
+        conic-gradient(
+
+            var(--cor) calc(var(--progress)*1%),
+
+            #ececec 0
+
+        );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    position:relative;
+
+}
+
+.progress-ring::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:72px;
+
+    height:72px;
+
+    background:#fff;
+
+    border-radius:50%;
+
+}
+
+.progress-ring span{
+
+    position:relative;
+
+    z-index:2;
+
+    font-size:1.1rem;
+
+    font-weight:bold;
+
+    color:#23395B;
+
+}
+
+.nivel-match{
+
+    margin-top:.8rem;
+
+    font-weight:bold;
+
+    color:#444;
+
+}
+
+/* ===========================
+        DETALHES
+=========================== */
+
+.card-detalhes{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:1rem;
+
+    margin:1.5rem 0;
+
+    text-align:center;
+
+}
+
+.card-detalhes div{
+
+    background:#f8f9fb;
+
+    padding:1rem;
+
+    border-radius:12px;
+
+}
+
+.card-detalhes span{
+
+    font-size:1.4rem;
+
+}
+
+.card-detalhes p{
+
+    margin:.4rem 0;
+
+    color:#777;
+
+    font-size:.9rem;
+
+}
+
+.card-detalhes strong{
+
+    color:#23395B;
+
+}
+
+/* ===========================
+        HABILIDADES
+=========================== */
+
+.card-habilidades h4{
+
+    margin-bottom:1rem;
+
+    color:#23395B;
+
+}
+
+.chips{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:.7rem;
+
+}
+
+.chip{
+
+    padding:.65rem 1rem;
+
+    border-radius:999px;
+
+    background:#E8F1FF;
+
+    color:#1E3A8A;
+
+    font-weight:600;
+
+    transition:.2s;
+
+    border:1px solid #C8DBFF;
+
+}
+
+.chip:hover{
+
+    transform:translateY(-2px);
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+.chip.completo{
+
+    background:#DCFCE7;
+
+    color:#166534;
+
+}
+
+/* ===========================
+        HR
+=========================== */
+
+.card-vaga hr{
+
+    border:none;
+
+    border-top:1px solid #ececec;
+
+    margin:1.3rem 0;
+
+}
+
+/* ===========================
+        RECOMENDAÇÃO
+=========================== */
+
+#recomendacao-estudos{
+
+    margin-top:2rem;
+
+    padding:2rem;
+
+    background:linear-gradient(135deg,#FFF9E6,#FFF3BF);
+
+    border:2px solid var(--cor-primaria);
+
+    border-radius:18px;
+
+    box-shadow:0 12px 25px rgba(255,193,7,.18);
+
+}
+
+#recomendacao-estudos h3{
+
+    color:var(--cor-primaria);
+
+    margin-bottom:1.5rem;
+
+}
+
+#recomendacao-estudos .chip{
+
+    background:#FFD54A;
+
+    color:#5C4300;
+
+    border:none;
+
+}
+
+#recomendacao-estudos .chip:hover{
+
+    background:#FFC107;
+
+    color:#3B2A00;
+
+}
+
+
+/* ===========================
+        RESPONSIVO
+=========================== */
+
+@media(max-width:768px){
+
+    .card-topo{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .card-compatibilidade{
+
+        width:100%;
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:center;
+
+    }
+
+    .card-detalhes{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+.badge{
+
+    display:inline-flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:.45rem 1rem;
+
+    border-radius:999px;
+
+    color:white;
+
+    font-weight:700;
+
+    margin-top:.8rem;
+
+}
+
+.badge.alta{
+
+    background:#22c55e;
+
+}
+
+.badge.média{
+
+    background:#f59e0b;
+
+}
+
+.badge.baixa{
+
+    background:#ef4444;
+
+}
+
+.card-vazio{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:2rem;
+
+    text-align:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.card-vazio h3{
+
+    color:#2563eb;
+
+    margin-bottom:.8rem;
+
+}
+
+.card-vazio p{
+
+    color:#666;
+
+}

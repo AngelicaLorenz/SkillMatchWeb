@@ -1,0 +1,205 @@
+[
+    {
+        "id": 1,
+        "empresa": "Tech Systems",
+        "cargo": "Desenvolvedor Front-End Júnior",
+        "area": "front-end",
+        "nivel": "Júnior",
+        "modalidade": "Remoto",
+        "salario": 2900,
+        "requisitos": [
+            "HTML",
+            "CSS",
+            "JAVASCRIPT",
+            "GITHUB"
+        ]
+    },
+    {
+        "id": 2,
+        "empresa": "123 Code",
+        "cargo": "Estágio Front-End",
+        "area": "front-end",
+        "nivel": "Estágio",
+        "modalidade": "Híbrido",
+        "salario": 1700,
+        "requisitos": [
+            "HTML",
+            "CSS",
+            "JAVASCRIPT"
+        ]
+    },
+    {
+        "id": 3,
+        "empresa": "Web Tech",
+        "cargo": "Programador JavaScript Pleno",
+        "area": "front-end",
+        "nivel": "Pleno",
+        "modalidade": "Presencial",
+        "salario": 3500,
+        "requisitos": [
+            "HTML",
+            "CSS",
+            "JAVASCRIPT",
+            "NODEJS",
+            "GITHUB"
+        ]
+    },
+    {
+        "id": 4,
+        "empresa": "Cloud Solutions",
+        "cargo": "Desenvolvedor Back-End Júnior",
+        "area": "back-end",
+        "nivel": "Júnior",
+        "modalidade": "Remoto",
+        "salario": 3400,
+        "requisitos": [
+            "JAVASCRIPT",
+            "NODEJS",
+            "EXPRESS",
+            "GIT"
+        ]
+    },
+    {
+        "id": 5,
+        "empresa": "DevCore",
+        "cargo": "Desenvolvedor Node.js Pleno",
+        "area": "back-end",
+        "nivel": "Pleno",
+        "modalidade": "Híbrido",
+        "salario": 6200,
+        "requisitos": [
+            "NODEJS",
+            "EXPRESS",
+            "MYSQL",
+            "API REST",
+            "JWT",
+            "GITHUB"
+        ]
+    },
+    {
+        "id": 6,
+        "empresa": "Infinity Software",
+        "cargo": "Desenvolvedor Back-End Sênior",
+        "area": "back-end",
+        "nivel": "Sênior",
+        "modalidade": "Remoto",
+        "salario": 9800,
+        "requisitos": [
+            "NODEJS",
+            "DOCKER",
+            "POSTGRESQL",
+            "API REST",
+            "MICROSERVIÇOS",
+            "AWS"
+        ]
+    },
+    {
+        "id": 7,
+        "empresa": "Smart Data",
+        "cargo": "Analista de Dados Júnior",
+        "area": "dados",
+        "nivel": "Júnior",
+        "modalidade": "Híbrido",
+        "salario": 3800,
+        "requisitos": [
+            "SQL",
+            "EXCEL",
+            "POWER BI"
+        ]
+    },
+    {
+        "id": 8,
+        "empresa": "Insight BI",
+        "cargo": "Analista BI",
+        "area": "dados",
+        "nivel": "Pleno",
+        "modalidade": "Remoto",
+        "salario": 5900,
+        "requisitos": [
+            "SQL",
+            "POWER BI",
+            "PYTHON",
+            "EXCEL"
+        ]
+    },
+    {
+        "id": 9,
+        "empresa": "DataMind",
+        "cargo": "Cientista de Dados",
+        "area": "dados",
+        "nivel": "Sênior",
+        "modalidade": "Remoto",
+        "salario": 11000,
+        "requisitos": [
+            "PYTHON",
+            "PANDAS",
+            "NUMPY",
+            "SQL",
+            "MACHINE LEARNING"
+        ]
+    },
+    {
+        "id": 10,
+        "empresa": "Rocket Code",
+        "cargo": "Desenvolvedor Full Stack",
+        "area": "back-end",
+        "nivel": "Pleno",
+        "modalidade": "Remoto",
+        "salario": 7600,
+        "requisitos": [
+            "HTML",
+            "CSS",
+            "JAVASCRIPT",
+            "REACT",
+            "NODEJS",
+            "MYSQL"
+        ]
+    },
+    {
+        "id": 11,
+        "empresa": "Pixel Studio",
+        "cargo": "Front-End React",
+        "area": "front-end",
+        "nivel": "Pleno",
+        "modalidade": "Híbrido",
+        "salario": 5400,
+        "requisitos": [
+            "HTML",
+            "CSS",
+            "JAVASCRIPT",
+            "REACT",
+            "GITHUB"
+        ]
+    },
+    {
+        "id": 12,
+        "empresa": "Future Tech",
+        "cargo": "Desenvolvedor React Júnior",
+        "area": "front-end",
+        "nivel": "Júnior",
+        "modalidade": "Remoto",
+        "salario": 3900,
+        "requisitos": [
+            "HTML",
+            "CSS",
+            "JAVASCRIPT",
+            "REACT"
+        ]
+    },
+    {
+        "id": 13,
+        "empresa": "Vision Analytics",
+        "cargo": "Engenheiro de Dados",
+        "area": "dados",
+        "nivel": "Pleno",
+        "modalidade": "Presencial",
+        "salario": 8200,
+        "requisitos": [
+            "PYTHON",
+            "SQL",
+            "ETL",
+            "DOCKER",
+            "AWS"
+        ]
+    }
+]
